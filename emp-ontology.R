@@ -46,7 +46,6 @@ sampleSheet <- within(sampleSheet, empo_3[Project == "BOT662" & SampleType %ni% 
 sampleSheet <- within(sampleSheet, empo_3[grepl("Macaranga", Metadata) & (SampleType %ni% c("Air", "Root", "Soil"))] <- "Plant surface")
 sampleSheet <- within(sampleSheet, empo_3[(grepl("Root", SampleType) | grepl("Rhizome", SampleType)) & Project != "BOT662"] <- "Plant rhizosphere")
 
-
 #fungus
 sampleSheet <- within(sampleSheet, empo_3[SampleType == "Mushroom"] <- "Fungus corpus")
 
