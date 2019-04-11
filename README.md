@@ -5,12 +5,4 @@ Updates the C-MAIKI sample sheet with Earth Microbiome Project's ontology column
 
 Uncategorized samples:
 
-Air
-
-EMChamberWood
-
-DrosophilaLab
-
-Plant Negative (Project = "BOT662")
-
-EmptyWell
+Air, EMChamberWood, DrosophilaLab, Plant Negative (Project = "BOT662"), EmptyWell
