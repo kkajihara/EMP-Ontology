@@ -18,7 +18,7 @@ sampleSheet$empo_3 <- NA
 
 #empo_1
 sampleSheet <- within(sampleSheet, empo_1[Host == "Nonhost" & SampleType %ni% c("Air", "EMChamberWood", "SoilChem")] <- "Free-living")
-sampleSheet <- within(sampleSheet, empo_1[((Host %in% c("Animal", "Plant", "Fungus")) & SampleType != "Negative") | SampleType == "ConeSnail"] <- "Host-associated")
+sampleSheet <- within(sampleSheet, empo_1[((Host %in% c("Animal", "Plant", "Fungus")) & SampleType %ni% c("Negative", "Air")) | SampleType == "ConeSnail"] <- "Host-associated")
 sampleSheet <- within(sampleSheet, empo_1[CollectionLabel == "PCRpositive"] <- "Control")
 sampleSheet <- within(sampleSheet, empo_1[SampleType == "MockCommunity"] <- "Control")
 sampleSheet <- within(sampleSheet, empo_1[SampleType %in% c("NegativeControl", "PCRNegative")] <- "Control")
@@ -28,7 +28,7 @@ sampleSheet <- within(sampleSheet, empo_1[SampleType %in% c("NegativeControl", "
 
 #empo_2
 sampleSheet <- within(sampleSheet, empo_2[Host == "Fungus"] <- "Fungus")
-sampleSheet <- within(sampleSheet, empo_2[Host == "Plant" & SampleType != "Negative"] <- "Plant")
+sampleSheet <- within(sampleSheet, empo_2[Host == "Plant" & SampleType %ni% c("Negative", "Air")] <- "Plant")
 sampleSheet <- within(sampleSheet, empo_2[Host == "Animal"| SampleType == "ConeSnail"] <- "Animal")
 sampleSheet <- within(sampleSheet, empo_2[(Habitat %in% c("Riverine", "Terrestrial") & Host == "Nonhost") & SampleType %ni% c("Air", "EMChamberWood", "SoilChem")] <- "Non-saline")
 sampleSheet <- within(sampleSheet, empo_2[Habitat == "Marine" & Host == "Nonhost"] <- "Marine")
