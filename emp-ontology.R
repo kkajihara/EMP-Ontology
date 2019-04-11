@@ -43,9 +43,10 @@ sampleSheet <- within(sampleSheet, empo_2[CollectionLabel == "PCRpositive" | Sam
 
 #plant 
 sampleSheet <- within(sampleSheet, empo_3[grepl("LeafSwab", SampleType)] <- "Plant surface")
-sampleSheet <- within(sampleSheet, empo_3[grepl("Hibiscus", Metadata) & grepl("swab", Metadata) & SampleType != "Air"] <- "Plant surface")
+sampleSheet <- within(sampleSheet, empo_3[Project == "BOT662" & SampleType %ni% c("Air", "Negative")] <- "Plant surface")
 sampleSheet <- within(sampleSheet, empo_3[grepl("Macaranga", Metadata) & (SampleType %ni% c("Air", "Root", "Soil"))] <- "Plant surface")
-sampleSheet <- within(sampleSheet, empo_3[grepl("Root", SampleType) | grepl("Rhizome", SampleType)] <- "Plant rhizosphere")
+sampleSheet <- within(sampleSheet, empo_3[(grepl("Root", SampleType) | grepl("Rhizome", SampleType)) & Project != "BOT662"] <- "Plant rhizosphere")
+
 
 #fungus
 sampleSheet <- within(sampleSheet, empo_3[SampleType == "Mushroom"] <- "Fungus corpus")
@@ -56,7 +57,7 @@ sampleSheet <- within(sampleSheet, empo_3[SampleType == "BirdSkinSwab"] <- "Anim
 
 #non-saline
 sampleSheet <- within(sampleSheet, empo_3[SampleType == "RockSwab" & Habitat == "Terrestrial"] <- "Surface (non-saline)")
-sampleSheet <- within(sampleSheet, empo_3[grepl("Soil", SampleType) & SampleType != "SoilChem"] <- "Soil (non-saline)")
+sampleSheet <- within(sampleSheet, empo_3[grepl("Soil", SampleType) & SampleType != "SoilChem" & Project != "BOT662"] <- "Soil (non-saline)")
 sampleSheet <- within(sampleSheet, empo_3[SampleType %in% c("Water", "WaterFilter") & Habitat == "Riverine"] <- "Water (non-saline)")
 sampleSheet <- within(sampleSheet, empo_3[grepl("SubstrateSwab", SampleType)] <- "Surface (non-saline)")
 sampleSheet <- within(sampleSheet, empo_3[grepl("POM", SampleType)] <- "Sediment (non-saline)")
@@ -73,7 +74,7 @@ sampleSheet <- within(sampleSheet, empo_3[SampleType == "MockCommunity"] <- "Moc
 sampleSheet <- within(sampleSheet, empo_3[CollectionLabel == "PCRpositive"] <- "Single strain")
 
 #plant corpus
-sampleSheet <- within(sampleSheet, empo_3[Host == "Plant" & (empo_3 %ni% c("Plant surface", "Plant rhizosphere"))] <- "Plant corpus")
+sampleSheet <- within(sampleSheet, empo_3[Host == "Plant" & (empo_3 %ni% c("Plant surface", "Plant rhizosphere")) & Project != "BOT662"] <- "Plant corpus")
 
 #animal corpus 
 sampleSheet <- within(sampleSheet, empo_3[(Host == "Animal" & (empo_3 %ni% c("Animal distal gut", "Animal surface"))) | (SampleType %in% c("BirdBlood", "ConeSnail"))] <- "Animal corpus")
