@@ -19,7 +19,6 @@ sampleSheet$empo_3 <- NA
 #empo_1
 sampleSheet <- within(sampleSheet, empo_1[Host == "Nonhost" & SampleType %ni% c("Air", "EMChamberWood", "SoilChem")] <- "Free-living")
 sampleSheet <- within(sampleSheet, empo_1[((Host %in% c("Animal", "Plant", "Fungus")) & SampleType != "Negative") | SampleType == "ConeSnail"] <- "Host-associated")
-sampleSheet <- within(sampleSheet, empo_1[SampleType == "DrosophilaLab"] <- "Unknown")
 sampleSheet <- within(sampleSheet, empo_1[CollectionLabel == "PCRpositive"] <- "Control")
 sampleSheet <- within(sampleSheet, empo_1[SampleType == "MockCommunity"] <- "Control")
 sampleSheet <- within(sampleSheet, empo_1[SampleType %in% c("NegativeControl", "PCRNegative")] <- "Control")
